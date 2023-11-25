@@ -24,7 +24,8 @@ public:
     void setSalariu(int x);
     std::string getNume();
     void setNume(std::string x);
-    Etaj *getEtaj();
+
+    [[maybe_unused]] Etaj *getEtaj();
 
     friend std::ostream &operator<<(std::ostream &os, const Angajati &ang);
     Angajati & operator=(const Angajati &ang);

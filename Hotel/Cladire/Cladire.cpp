@@ -20,7 +20,7 @@ int Cladire::getId() const
     return id;
 }
 
-void Cladire::setId(int x)
+[[maybe_unused]] void Cladire::setId(int x)
 {
     id = x;
 }

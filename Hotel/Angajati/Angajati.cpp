@@ -49,7 +49,7 @@ void Angajati::setNume(std::string x)
     nume = std::move(x);
 }
 
-Etaj *Angajati::getEtaj()
+[[maybe_unused]] Etaj *Angajati::getEtaj()
 {
     return etj;
 }
