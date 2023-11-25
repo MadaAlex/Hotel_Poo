@@ -54,9 +54,6 @@ Etaj *Angajati::getEtaj()
     return etj;
 }
 
-void setEtaj(const Etaj *Etj) {
-    Etj = const_cast<Etaj*>(Etj);
-}
 
 std::ostream &operator<<(std::ostream &os, const Angajati &ang)
 {
@@ -75,3 +72,4 @@ Angajati &Angajati::operator=(const Angajati &ang)
     }
     return *this;
 }
+

@@ -25,7 +25,6 @@ public:
     std::string getNume();
     void setNume(std::string x);
     Etaj *getEtaj();
-    void setEtaj(const Etaj &Etj);
 
     friend std::ostream &operator<<(std::ostream &os, const Angajati &ang);
     Angajati & operator=(const Angajati &ang);

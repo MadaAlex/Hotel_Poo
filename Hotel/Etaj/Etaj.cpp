@@ -5,8 +5,7 @@ Etaj::Etaj() : id(0), cld(nullptr), nr(0), lift(false) {}
 Etaj::Etaj(int idd, Cladire* cldd, int nmr, bool lift_s)
         : id(idd), cld(cldd), nr(nmr), lift(lift_s) {}
 
-Etaj::Etaj(const Etaj &etj)
-        : id(etj.id), cld(etj.cld), nr(etj.nr), lift(etj.lift) {}
+Etaj::Etaj(const Etaj &etj)= default;
 
 Etaj::~Etaj()
 {
