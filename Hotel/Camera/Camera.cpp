@@ -1,7 +1,5 @@
 #include "Camera.h"
 
-#include <utility>
-
 Camera::Camera() : id(0), etj(nullptr), nr(0){}
 
 Camera::Camera(int idd, Etaj *Etj, int nmr, std::string  clr, std::string  tp)
