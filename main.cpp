@@ -32,42 +32,24 @@ int main()
     std::cout << camera1 << std::endl;
 
     Cladire cladire(1, "Main Street", "Office Building");
-
-    std::cout << "Cladire ID: " << cladire.getId() << std::endl;
-    cladire.setAdresa("New Address");
-    std::cout << "Cladire Address: " << cladire.getAdresa() << std::endl;
-
-    cladire.setName("New Name");
-    std::cout << "Cladire Name: " << cladire.getName() << std::endl;
-
-    std::cout << cladire << std::endl;
-
     Etaj etaj(1, &cladire, 2, true);
-    std::cout << "Etaj ID: " << etaj.getId() << std::endl;
-    etaj.setId(2);
 
-    std::cout << "Etaj Nr: " << etaj.getNr() << std::endl;
-    etaj.setNr(3);
+    Angajati angajat1(1, &etaj, 3000, "John Doe");
+    Angajati angajat2(2, &etaj, 4000, "Jane Doe");
 
-    std::cout << "Etaj has lift? " << etaj.getLift() << std::endl;
-    etaj.setLift(false);
+    std::cout << "Angajat1 ID: " << angajat1.getId() << std::endl;
+    std::cout << "Angajat1 Salary: " << angajat1.getSalariu() << std::endl;
+    std::cout << "Angajat1 Name: " << angajat1.getNume() << std::endl;
 
-    std::cout << etaj << std::endl;
+    angajat1.setId(101);
+    angajat1.setSalariu(3500);
+    angajat1.setNume("John Smith");
 
-    Cladire A(1, "204, Splaiul Independentei", "Camin Grozavesti");
-    std::cout << A << std::endl;
+    std::cout << "Updated Angajat1 ID: " << angajat1.getId() << std::endl;
+    std::cout << "Updated Angajat1 Salary: " << angajat1.getSalariu() << std::endl;
+    std::cout << "Updated Angajat1 Name: " << angajat1.getNume() << std::endl;
 
-    Cladire B;
-    B = A;
-
-    Etaj C(1, &A, 3, false);
-    std::cout << C;
-
-    Camera D(1, &C, 32, "neagra", "single");
-    std::cout << D << std::endl;
-
-    Angajati E(1, &C, 4000, "Mircea");
-    std::cout << E;
+    std::cout << angajat1 << std::endl;
 
     return 0;
 }
