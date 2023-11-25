@@ -15,7 +15,7 @@ public:
     Cladire(const Cladire &cld);
     ~Cladire();
 
-    int getId() const;
+    [[nodiscard]] int getId() const;
     void setId(int x);
     std::string getAdresa();
     void setAdresa(std::string Adr);

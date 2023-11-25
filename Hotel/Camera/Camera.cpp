@@ -56,7 +56,7 @@ void Camera::setNr(int x)
     nr = x;
 }
 
- std::string Camera::getCuloare()
+std::string Camera::getCuloare()
 {
     return culoare;
 }
@@ -94,8 +94,13 @@ std::ostream &operator<<(std::ostream &os, const Camera &cmr)
 
 Camera & Camera::operator=(const Camera &cmr)
 {
-    id = cmr.id;
-    nr = cmr.nr;
-    culoare = cmr.culoare;
-    tip = cmr.tip;
+    if (this != &cmr)
+    {
+        id = cmr.id;
+        nr = cmr.nr;
+        culoare = cmr.culoare;
+        tip = cmr.tip;
+        etj = cmr.etj;
+    }
+    return *this;
 }

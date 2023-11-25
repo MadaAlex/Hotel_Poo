@@ -18,9 +18,9 @@ public:
     Angajati(const Angajati &ang);
     ~Angajati();
 
-    int getId() const;
+    [[nodiscard]] int getId() const;
     void setId(int x);
-    int getSalariu() const;
+    [[nodiscard]] int getSalariu() const;
     void setSalariu(int x);
     std::string getNume();
     void setNume(std::string x);

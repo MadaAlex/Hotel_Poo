@@ -26,7 +26,7 @@ Etaj::Etaj(const Etaj &etj)
 
 Etaj::~Etaj()
 {
-    std::cout<<"Etaj destructor"<<std::endl;
+    std::cout << "Etaj destructor" << std::endl;
 }
 
 int Etaj::getId() const
@@ -66,7 +66,10 @@ Cladire *Etaj::getCladire()
 
 void Etaj::setCladire(const Cladire &clad)
 {
-    *cld = clad;
+
+        delete cld;
+
+    cld = new Cladire(clad);
 }
 
 std::ostream &operator<<(std::ostream &os, const Etaj &etj)
@@ -85,6 +88,8 @@ Etaj & Etaj::operator=(const Etaj &etj)
         id = etj.id;
         nr = etj.nr;
         lift = etj.lift;
-        cld = etj.cld;
+        delete cld;
+        cld = new Cladire(*(etj.cld));
     }
+    return *this;
 }
