@@ -12,7 +12,7 @@ Angajati::Angajati(int idd, Etaj *Etj, int Salariu, std::string Nume)
 {
 }
 
-Angajati::Angajati(const Angajati &ang)= default;
+Angajati::Angajati(const Angajati &ang) = default;
 
 Angajati::~Angajati()
 {
@@ -54,9 +54,8 @@ Etaj *Angajati::getEtaj()
     return etj;
 }
 
-void Angajati::setEtaj(const Etaj &Etj)
-{
-    *etj = Etj;
+void setEtaj(const Etaj *Etj) {
+    Etj = const_cast<Etaj*>(Etj);
 }
 
 std::ostream &operator<<(std::ostream &os, const Angajati &ang)
@@ -65,7 +64,7 @@ std::ostream &operator<<(std::ostream &os, const Angajati &ang)
     return os;
 }
 
-Angajati& Angajati::operator=(const Angajati &ang)
+Angajati &Angajati::operator=(const Angajati &ang)
 {
     if (this != &ang)
     {

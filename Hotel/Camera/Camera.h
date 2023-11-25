@@ -2,37 +2,39 @@
 #define CAMERA_H
 
 #include <iostream>
+#include <memory> // Include the necessary header for std::shared_ptr
 #include "../Etaj/Etaj.h"
 
 class Camera
 {
 protected:
     int id;
-    Etaj *etj{};
+    Etaj *etj;
     int nr;
     std::string culoare;
     std::string tip;
 
 public:
     Camera();
-    Camera(int idd, Etaj *Etj, int nmr, std::string clr, std::string tp);
+    Camera(int idd, Etaj *Etj, int nmr, std::string  clr, std::string  tp);
     Camera(const Camera &cmr);
     ~Camera();
 
-    [[nodiscard]] int getId() const;
+    int getId() const;
     void setId(int x);
-    [[nodiscard]] int getNr() const;
+    int getNr() const;
     void setNr(int x);
-
-    [[maybe_unused]] std::string getCuloare();
+    std::string getCuloare();
     void setCuloare(std::string x);
     std::string getTip();
     void setTip(std::string x);
     Etaj *getEtaj();
-    void setEtaj(const Etaj &Etj);
+    void setEtaj(const Etaj *Etj);
 
     friend std::ostream &operator<<(std::ostream &os, const Camera &cmr);
-    Camera & operator=(const Camera &cmr);
+    Camera &operator=(const Camera &cmr);
+
+    Camera(int idd, const std::shared_ptr<Etaj> &Etj, int nmr, std::string  clr, std::string  tp);
 };
 
 #endif // CAMERA_H

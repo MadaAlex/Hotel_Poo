@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 #include "Hotel/Cladire/Cladire.h"
 #include "Hotel/Etaj/Etaj.h"
 #include "Hotel/Camera/Camera.h"
@@ -7,7 +8,7 @@
 int main()
 {
     Cladire cladire(1, "Main Street", "Office Building");
-    Etaj etaj(1, &cladire, 2, true);
+    Etaj etaj(1, static_cast<std::shared_ptr<Cladire>>(&cladire), 2, true);
 
     std::cout << "Etaj ID: " << etaj.getId() << std::endl;
     etaj.setId(2);
@@ -31,12 +32,13 @@ int main()
     B = A;
 
     std::cout << "A doua clasa(Etaj):" << std::endl;
-    Etaj C(1, &A, 3, false);
+    Etaj C(1, static_cast<std::shared_ptr<Cladire>>(&A), 3, false);
     std::cout << C;
 
     std::cout << "A treia clasa:(Camera)" << std::endl;
     Camera D(1, &C, 32, "neagra", "single");
     std::cout << D << std::endl;
+
 
     std::cout << "A patra clasa:(Angajati)" << std::endl;
     Angajati E(1, &C, 4000, "Mircea");

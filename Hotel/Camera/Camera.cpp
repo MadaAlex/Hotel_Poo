@@ -2,17 +2,12 @@
 
 #include <utility>
 
-Camera::Camera()
-        : id(0), etj(nullptr), nr(0)
-{
-}
+Camera::Camera() : id(0), etj(nullptr), nr(0){}
 
-Camera::Camera(int idd, Etaj *Etj, int nmr, std::string clr, std::string tp)
-        : id(idd), etj(Etj), nr(nmr), culoare(std::move(clr)), tip(std::move(tp))
-{
-}
+Camera::Camera(int idd, Etaj *Etj, int nmr, std::string  clr, std::string  tp)
+        : id(idd), etj(Etj), nr(nmr), culoare(std::move(clr)), tip(std::move(tp)) {}
 
-Camera::Camera(const Camera &cmr)= default;
+Camera::Camera(const Camera &cmr) = default;
 
 Camera::~Camera()
 {
@@ -67,9 +62,9 @@ Etaj *Camera::getEtaj()
     return etj;
 }
 
-void Camera::setEtaj(const Etaj &Etj)
+void Camera::setEtaj(const Etaj *Etj)
 {
-    *etj = Etj;
+    etj = const_cast<Etaj *>(Etj);
 }
 
 std::ostream &operator<<(std::ostream &os, const Camera &cmr)
@@ -78,7 +73,7 @@ std::ostream &operator<<(std::ostream &os, const Camera &cmr)
     return os;
 }
 
-Camera & Camera::operator=(const Camera &cmr)
+Camera &Camera::operator=(const Camera &cmr)
 {
     if (this != &cmr)
     {
@@ -91,4 +86,5 @@ Camera & Camera::operator=(const Camera &cmr)
     return *this;
 }
 
-
+Camera::Camera(int idd, const std::shared_ptr<Etaj> &Etj, int nmr, std::string  clr, std::string  tp)
+        : id(idd), etj(Etj.get()), nr(nmr), culoare(std::move(clr)), tip(std::move(tp)) {}
