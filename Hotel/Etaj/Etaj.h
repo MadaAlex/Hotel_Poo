@@ -25,9 +25,6 @@ public:
     [[nodiscard]] bool getLift() const;
     void setLift(bool x);
 
-    [[maybe_unused]] Cladire* getCladire();
-
-    [[maybe_unused]] void setCladire(Cladire* clad);
 
     friend std::ostream &operator<<(std::ostream &os, const Etaj &etj);
     Etaj &operator=(const Etaj &etj);

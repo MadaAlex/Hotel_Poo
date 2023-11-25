@@ -42,16 +42,6 @@ void Etaj::setLift(bool x)
     lift = x;
 }
 
-[[maybe_unused]] Cladire* Etaj::getCladire()
-{
-    return cld;
-}
-
-[[maybe_unused]] void Etaj::setCladire(Cladire* clad)
-{
-    cld = clad;
-}
-
 std::ostream &operator<<(std::ostream &os, const Etaj &etj)
 {
     os << "Etajul cu ID-ul: " << etj.id << " de pe etajul " << etj.nr
