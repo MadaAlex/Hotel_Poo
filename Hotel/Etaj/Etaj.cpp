@@ -1,13 +1,12 @@
 #include "Etaj.h"
 
-#include <utility>
-
 Etaj::Etaj() : id(0), cld(nullptr), nr(0), lift(false) {}
 
-Etaj::Etaj(int idd, std::shared_ptr<Cladire> cldd, int nmr, bool lift_s)
-        : id(idd), cld(std::move(cldd)), nr(nmr), lift(lift_s) {}
+Etaj::Etaj(int idd, Cladire* cldd, int nmr, bool lift_s)
+        : id(idd), cld(cldd), nr(nmr), lift(lift_s) {}
 
-Etaj::Etaj(const Etaj &etj)= default;
+Etaj::Etaj(const Etaj &etj)
+        : id(etj.id), cld(etj.cld), nr(etj.nr), lift(etj.lift) {}
 
 Etaj::~Etaj()
 {
@@ -44,22 +43,21 @@ void Etaj::setLift(bool x)
     lift = x;
 }
 
-std::shared_ptr<Cladire> Etaj::getCladire()
+Cladire* Etaj::getCladire()
 {
     return cld;
 }
 
-void Etaj::setCladire(const Cladire &clad)
+void Etaj::setCladire(Cladire* clad)
 {
-    cld = std::make_shared<Cladire>(clad);
+    cld = clad;
 }
 
 std::ostream &operator<<(std::ostream &os, const Etaj &etj)
 {
-    if (etj.lift)
-        os << "Etajul cu nr:" << etj.nr << ", are lift, face parte din cladirea: " << *(etj.cld) << "\n";
-    else
-        os << "Etajul cu nr:" << etj.nr << ", nu are lift, face parte din cladirea: " << *(etj.cld) << "\n";
+    os << "Etajul cu ID-ul: " << etj.id << " de pe etajul " << etj.nr
+       << " are lift: " << etj.lift << ", se afla in cladirea cu ID-ul: "
+       << etj.cld->getId() << "\n";
     return os;
 }
 

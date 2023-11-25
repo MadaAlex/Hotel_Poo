@@ -2,7 +2,7 @@
 #define CAMERA_H
 
 #include <iostream>
-#include <memory> // Include the necessary header for std::shared_ptr
+#include <memory>
 #include "../Etaj/Etaj.h"
 
 class Camera
@@ -20,9 +20,9 @@ public:
     Camera(const Camera &cmr);
     ~Camera();
 
-    int getId() const;
+    [[nodiscard]] int getId() const;
     void setId(int x);
-    int getNr() const;
+    [[nodiscard]] int getNr() const;
     void setNr(int x);
     std::string getCuloare();
     void setCuloare(std::string x);
@@ -34,7 +34,6 @@ public:
     friend std::ostream &operator<<(std::ostream &os, const Camera &cmr);
     Camera &operator=(const Camera &cmr);
 
-    Camera(int idd, const std::shared_ptr<Etaj> &Etj, int nmr, std::string  clr, std::string  tp);
 };
 
 #endif // CAMERA_H

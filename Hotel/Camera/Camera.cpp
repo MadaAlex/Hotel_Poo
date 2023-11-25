@@ -85,6 +85,3 @@ Camera &Camera::operator=(const Camera &cmr)
     }
     return *this;
 }
-
-Camera::Camera(int idd, const std::shared_ptr<Etaj> &Etj, int nmr, std::string  clr, std::string  tp)
-        : id(idd), etj(Etj.get()), nr(nmr), culoare(std::move(clr)), tip(std::move(tp)) {}

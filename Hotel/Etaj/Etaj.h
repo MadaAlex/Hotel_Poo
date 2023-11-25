@@ -1,22 +1,20 @@
-
 #ifndef ETAJ_H
 #define ETAJ_H
 
 #include <iostream>
-#include <memory>
 #include "../Cladire/Cladire.h"
 
 class Etaj
 {
 protected:
     int id;
-    std::shared_ptr<Cladire> cld;
+    Cladire* cld;
     int nr;
     bool lift;
 
 public:
     Etaj();
-    Etaj(int idd, std::shared_ptr<Cladire> cldd, int nmr, bool lift_s);
+    Etaj(int idd, Cladire* cldd, int nmr, bool lift_s);
     Etaj(const Etaj &etj);
     ~Etaj();
 
@@ -26,8 +24,8 @@ public:
     void setNr(int x);
     [[nodiscard]] bool getLift() const;
     void setLift(bool x);
-    std::shared_ptr<Cladire> getCladire();
-    void setCladire(const Cladire &clad);
+    Cladire* getCladire();
+    void setCladire(Cladire* clad);
 
     friend std::ostream &operator<<(std::ostream &os, const Etaj &etj);
     Etaj &operator=(const Etaj &etj);
