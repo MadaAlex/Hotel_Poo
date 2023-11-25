@@ -3,30 +3,16 @@
 #include <utility>
 
 Camera::Camera()
+        : id(0), etj(nullptr), nr(0)
 {
-    id = 0;
-    nr = 0;
-    culoare = "";
-    tip = "";
 }
 
 Camera::Camera(int idd, Etaj *Etj, int nmr, std::string clr, std::string tp)
+        : id(idd), etj(Etj), nr(nmr), culoare(std::move(clr)), tip(std::move(tp))
 {
-    id = idd;
-    etj = Etj;
-    nr = nmr;
-    culoare = std::move(clr);
-    tip = std::move(tp);
 }
 
-Camera::Camera(const Camera &cmr)
-{
-    id = cmr.id;
-    nr = cmr.nr;
-    culoare = cmr.culoare;
-    tip = cmr.tip;
-    etj = cmr.etj;
-}
+Camera::Camera(const Camera &cmr)= default;
 
 Camera::~Camera()
 {
@@ -104,3 +90,5 @@ Camera & Camera::operator=(const Camera &cmr)
     }
     return *this;
 }
+
+

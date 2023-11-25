@@ -1,25 +1,14 @@
 #include "Cladire.h"
 
-Cladire::Cladire()
+Cladire::Cladire() : id(0)
 {
-    id = 0;
-    adresa = "";
-    nume = "";
 }
 
-Cladire::Cladire(int idd, std::string Add, std::string Num)
+Cladire::Cladire(int idd, std::string Add, std::string Num) : id(idd), adresa(std::move(Add)), nume(std::move(Num))
 {
-    id = idd;
-    adresa = std::move(Add);
-    nume = std::move(Num);
 }
 
-Cladire::Cladire(const Cladire &cld)
-{
-    id = cld.id;
-    adresa = cld.adresa;
-    nume = cld.nume;
-}
+Cladire::Cladire(const Cladire &cld)= default;
 
 Cladire::~Cladire()
 {

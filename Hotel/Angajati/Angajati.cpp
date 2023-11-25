@@ -3,32 +3,20 @@
 #include <utility>
 
 Angajati::Angajati()
+        : id(0), etj(nullptr), salariu(0)
 {
-    id = 0;
-    salariu = 0;
-    nume = "";
-    etj = nullptr;  // Initialize pointer to nullptr
 }
 
 Angajati::Angajati(int idd, Etaj *Etj, int Salariu, std::string Nume)
+        : id(idd), etj(Etj), salariu(Salariu), nume(std::move(Nume))
 {
-    id = idd;
-    etj = Etj;
-    salariu = Salariu;
-    nume = std::move(Nume);
 }
 
-Angajati::Angajati(const Angajati &ang)
-{
-    id = ang.id;
-    salariu = ang.salariu;
-    nume = ang.nume;
-    etj = ang.etj;
-}
+Angajati::Angajati(const Angajati &ang)= default;
 
 Angajati::~Angajati()
 {
-    std::cout<<"Angajati destructor"<<std::endl;
+    std::cout << "Angajati destructor" << std::endl;
 }
 
 int Angajati::getId() const
