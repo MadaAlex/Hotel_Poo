@@ -42,12 +42,12 @@ void Etaj::setLift(bool x)
     lift = x;
 }
 
-Cladire* Etaj::getCladire()
+[[maybe_unused]] Cladire* Etaj::getCladire()
 {
     return cld;
 }
 
-void Etaj::setCladire(Cladire* clad)
+[[maybe_unused]] void Etaj::setCladire(Cladire* clad)
 {
     cld = clad;
 }
