@@ -1,7 +1,5 @@
 #include "Angajati.h"
 
-#include <utility>
-
 Angajati::Angajati()
         : id(0), etj(nullptr), salariu(0)
 {

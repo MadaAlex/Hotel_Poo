@@ -1,19 +1,9 @@
 #include "Cladire.h"
 
-Cladire::Cladire() : id(0)
-{
-}
+Cladire::Cladire() : id(0){}
 
-Cladire::Cladire(int idd, std::string Add, std::string Num) : id(idd), adresa(std::move(Add)), nume(std::move(Num))
-{
-}
-
-Cladire::Cladire(const Cladire &cld)= default;
-
-Cladire::~Cladire()
-{
-    std::cout << "Cladire destructor" << std::endl;
-}
+Cladire::Cladire(int id, std::string  adresa, std::string  name)
+        : id(id), adresa(std::move(adresa)), name(std::move(name)) {}
 
 int Cladire::getId() const
 {
@@ -25,39 +15,28 @@ int Cladire::getId() const
     id = x;
 }
 
-std::string Cladire::getAdresa()
+std::string Cladire::getAdresa() const
 {
     return adresa;
 }
 
-void Cladire::setAdresa(std::string Adr)
+void Cladire::setAdresa(const std::string& x)
 {
-    adresa = std::move(Adr);
+    adresa = x;
 }
 
-std::string Cladire::getName()
+std::string Cladire::getName() const
 {
-    return nume;
+    return name;
 }
 
-void Cladire::setName(std::string Nm)
+void Cladire::setName(const std::string& x)
 {
-    nume = std::move(Nm);
+    name = x;
 }
 
-std::ostream &operator<<(std::ostream &os, const Cladire &cld)
+std::ostream& operator<<(std::ostream& os, const Cladire& cladire)
 {
-    os << "(" << cld.id << ", " << cld.nume << ", " << cld.adresa << ")\n";
+    os << "Cladire ID: " << cladire.id << ", Adresa: " << cladire.adresa << ", Nume: " << cladire.name << "\n";
     return os;
-}
-
-Cladire & Cladire::operator=(const Cladire &cld)
-{
-    if (this != &cld)
-    {
-        id = cld.id;
-        nume = cld.nume;
-        adresa = cld.adresa;
-    }
-    return *this;
 }

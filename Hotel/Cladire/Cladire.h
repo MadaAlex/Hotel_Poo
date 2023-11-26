@@ -1,30 +1,32 @@
+// Cladire.h
 #ifndef CLADIRE_H
 #define CLADIRE_H
 
 #include <iostream>
+#include <string>
 
 class Cladire
 {
-protected:
+private:
     int id;
-    std::string adresa, nume;
+    std::string adresa;
+    std::string name;
 
 public:
     Cladire();
-    Cladire(int idd, std::string Add, std::string Num);
-    Cladire(const Cladire &cld);
-    ~Cladire();
+    Cladire(int id, std::string  adresa, std::string  name);
 
     [[nodiscard]] int getId() const;
 
     [[maybe_unused]] void setId(int x);
-    std::string getAdresa();
-    void setAdresa(std::string Adr);
-    std::string getName();
-    void setName(std::string Nm);
 
-    friend std::ostream &operator<<(std::ostream &os, const Cladire &cld);
-    Cladire & operator=(const Cladire &cld);
+    [[nodiscard]] std::string getAdresa() const;
+    void setAdresa(const std::string& x);
+
+    [[nodiscard]] std::string getName() const;
+    void setName(const std::string& x);
+
+    friend std::ostream& operator<<(std::ostream& os, const Cladire& cladire);
 };
 
 #endif // CLADIRE_H
