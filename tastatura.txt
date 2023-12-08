@@ -1,0 +1,16 @@
+1
+2
+3
+4
+Sample Building Address
+Building 1
+John Doe
+25
+mihai.gigel@example.com
+1
+101
+red
+double
+5
+10
+6

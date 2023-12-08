@@ -4,10 +4,9 @@
 
 Etaj::Etaj() : id(0), nr(0) {}
 
-Etaj::Etaj(const Etaj &etj){
-    id = etj.id;
-    nr = etj.nr;
-    camere = etj.camere;
+Etaj::Etaj(const Etaj &etj)
+        : id(etj.id), nr(etj.nr), camere(etj.camere)
+        {
 }
 
 Etaj::~Etaj()
