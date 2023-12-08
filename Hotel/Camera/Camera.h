@@ -2,38 +2,30 @@
 #define CAMERA_H
 
 #include <iostream>
-#include <memory>
-#include "../Etaj/Etaj.h"
+#include <string>
+
 
 class Camera
 {
 protected:
     int id;
-    Etaj *etj;
     int nr;
     std::string culoare;
     std::string tip;
 
 public:
-    Camera();
-    Camera(int idd, Etaj *Etj, int nmr, std::string  clr, std::string  tp);
-    Camera(const Camera &cmr);
+    Camera(int idd, int nmr, std::string  clr, std::string  tp);
+    [[maybe_unused]] Camera(const Camera &cmr);
     ~Camera();
-
-    [[nodiscard]] int getId() const;
-    void setId(int x);
-    [[nodiscard]] int getNr() const;
-    void setNr(int x);
-    std::string getCuloare();
-    void setCuloare(std::string x);
-    std::string getTip();
-    void setTip(std::string x);
-    Etaj *getEtaj();
-    void setEtaj(const Etaj *Etj);
-
     friend std::ostream &operator<<(std::ostream &os, const Camera &cmr);
     Camera &operator=(const Camera &cmr);
 
+
+//    void adaugaCamera(const Camera &camera);
+//    void eliminaCamera(int cameraId);
+
+
+    int getId() const;
 };
 
 #endif // CAMERA_H

@@ -1,33 +1,33 @@
+// Etaj.h
 #ifndef ETAJ_H
 #define ETAJ_H
 
-#include <iostream>
-#include "../Cladire/Cladire.h"
+#include <vector>
+#include "../Camera/Camera.h"
+#include <string>
 
 class Etaj
 {
 protected:
     int id;
-    Cladire* cld;
     int nr;
-    bool lift;
+    std::vector<Camera> camere{Camera(1, 48, "verde", "dubla"), Camera(2, 49, "verde", "single")};
 
 public:
     Etaj();
-    Etaj(int idd, Cladire* cldd, int nmr, bool lift_s);
-    Etaj(const Etaj &etj);
     ~Etaj();
+    Etaj(const Etaj &etj);
+    Etaj& operator=(const Etaj& other);
+    friend std::ostream& operator<<(std::ostream& os, const Etaj& etaj);
+
+
+    [[maybe_unused]] void adaugaCamera(const Camera& camera);
+
+
 
     [[nodiscard]] int getId() const;
-    void setId(int x);
-    [[nodiscard]] int getNr() const;
-    void setNr(int x);
-    [[nodiscard]] bool getLift() const;
-    void setLift(bool x);
 
-
-    friend std::ostream &operator<<(std::ostream &os, const Etaj &etj);
-    Etaj &operator=(const Etaj &etj);
+    void addRoom(const Camera &camera);
 };
 
 #endif // ETAJ_H

@@ -1,63 +1,50 @@
+// Etaj.cpp
+#include <algorithm>
 #include "Etaj.h"
 
-Etaj::Etaj() : id(0), cld(nullptr), nr(0), lift(false) {}
+Etaj::Etaj() : id(0), nr(0) {}
 
-Etaj::Etaj(int idd, Cladire* cldd, int nmr, bool lift_s)
-        : id(idd), cld(cldd), nr(nmr), lift(lift_s) {}
-
-Etaj::Etaj(const Etaj &etj)= default;
+Etaj::Etaj(const Etaj &etj){
+    id = etj.id;
+    nr = etj.nr;
+    camere = etj.camere;
+}
 
 Etaj::~Etaj()
 {
-    std::cout << "Etaj destructor" << std::endl;
+    std::cout << "Etaj destrutor" <<"\n";
 }
 
-int Etaj::getId() const
+
+[[maybe_unused]] void Etaj::adaugaCamera(const Camera& camera)
 {
-    return id;
+    camere.push_back(camera);
 }
 
-void Etaj::setId(int x)
+Etaj& Etaj::operator=(const Etaj& other)
 {
-    id = x;
+    if (this != &other)
+    {
+        id = other.id;
+        nr = other.nr;
+        camere = other.camere;
+    }
+    return *this;
 }
 
-int Etaj::getNr() const
-{
-    return nr;
-}
-
-void Etaj::setNr(int x)
-{
-    nr = x;
-}
-
-bool Etaj::getLift() const
-{
-    return lift;
-}
-
-void Etaj::setLift(bool x)
-{
-    lift = x;
-}
-
-std::ostream &operator<<(std::ostream &os, const Etaj &etj)
-{
-    os << "Etajul cu ID-ul: " << etj.id << " de pe etajul " << etj.nr
-       << " are lift: " << etj.lift << ", se afla in cladirea cu ID-ul: "
-       << etj.cld->getId() << "\n";
+std::ostream& operator<<(std::ostream& os, const Etaj& etaj) {
+    os << "Etaj ID: " << etaj.id << ", Numar: " << etaj.nr << "\nCamere:";
+    for (const auto &camera: etaj.camere) {
+        os << "\n" << camera;
+    }
     return os;
 }
 
-Etaj &Etaj::operator=(const Etaj &etj)
-{
-    if (this != &etj)
-    {
-        id = etj.id;
-        cld = etj.cld;
-        nr = etj.nr;
-        lift = etj.lift;
-    }
-    return *this;
+
+int Etaj::getId() const {
+    return id;
+}
+
+void Etaj::addRoom(const Camera &camera) {
+
 }

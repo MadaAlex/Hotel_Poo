@@ -3,32 +3,35 @@
 
 #include <iostream>
 #include "../Etaj/Etaj.h"
+#include "../Camera/Camera.h"
 
 class Angajati
 {
 protected:
     int id;
-    Etaj *etj;
     int salariu;
     std::string nume;
-
+    std::vector<Angajati> subalterni;
 public:
+
     Angajati();
-    Angajati(int idd, Etaj *Etj, int Salariu, std::string Nume);
-    Angajati(const Angajati &ang);
     ~Angajati();
+    Angajati(int idd, int Salariu, std::string Nume);
+    Angajati& operator=(const Angajati& player);
 
-    [[nodiscard]] int getId() const;
-    void setId(int x);
-    [[nodiscard]] int getSalariu() const;
-    void setSalariu(int x);
-    std::string getNume();
-    void setNume(std::string x);
-
-    [[maybe_unused]] Etaj *getEtaj();
+    [[maybe_unused]] Angajati(const Angajati &ang);
 
     friend std::ostream &operator<<(std::ostream &os, const Angajati &ang);
-    Angajati & operator=(const Angajati &ang);
+
+
+    [[maybe_unused]] void adaugaSubaltern(const Angajati&);
+
+    [[maybe_unused]] void curataCamera(Camera& cam);
+
+    [[maybe_unused]] [[nodiscard]] double calculeazaSalariuAnual() const;
+
+    [[maybe_unused]] static void maresteSalariu(int procent, int salariu);
+
 };
 
 #endif // ANGAJATI_H

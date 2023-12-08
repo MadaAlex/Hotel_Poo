@@ -11,7 +11,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 option(WARNINGS_AS_ERRORS "Treat warnings as errors" OFF)
 
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-  set(CMAKE_INSTALL_PREFIX "install_dir" CACHE PATH "..." FORCE)
+    set(CMAKE_INSTALL_PREFIX "install_dir" CACHE PATH "..." FORCE)
 endif()
 
 # disable sanitizers when releasing executables without explicitly requested debug info
@@ -98,15 +98,17 @@ add_executable(${PROJECT_NAME} main.cpp
         Hotel/Camera/Camera.cpp
         Hotel/Camera/Camera.h
         Hotel/Angajati/Angajati.cpp
-        Hotel/Angajati/Angajati.h)
+        Hotel/Angajati/Angajati.h
+        Hotel/Client/Client.cpp
+        Hotel/Client/Client.h)
 
 ###############################################################################
 
 # target definitions
 
 if(GITHUB_ACTIONS)
-  message("NOTE: GITHUB_ACTIONS defined")
-  target_compile_definitions(${PROJECT_NAME} PRIVATE GITHUB_ACTIONS)
+    message("NOTE: GITHUB_ACTIONS defined")
+    target_compile_definitions(${PROJECT_NAME} PRIVATE GITHUB_ACTIONS)
 endif()
 
 ###############################################################################

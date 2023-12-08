@@ -1,68 +1,97 @@
 #include <iostream>
 #include "Hotel/Cladire/Cladire.h"
-#include "Hotel/Etaj/Etaj.h"
-#include "Hotel/Camera/Camera.h"
+#include "Hotel/Client/Client.h"
 #include "Hotel/Angajati/Angajati.h"
 
-int main()
-{
-    Cladire cladire(1, "Main Street", "Office Building");
-    std::cout << cladire.getId() << std::endl;
-    cladire.setAdresa("New Address");
-    std::cout << cladire.getAdresa() << std::endl;
-    cladire.setName("New Name");
-    std::cout << cladire.getName() << std::endl;
+int main() {
+    Cladire cladire(1, "Sample Address", "Building 1");
+    Camera cameraInstance(1, 101, "red", "double");
+    int choice;
 
-    Etaj etaj(1, &cladire, 2, true);
-    std::cout << etaj.getId() << std::endl;
-    etaj.setId(2);
-    std::cout << etaj.getNr() << std::endl;
-    etaj.setNr(3);
-    std::cout << etaj.getLift() << std::endl;
-    etaj.setLift(false);
+    do {
+        std::cout << "Meniu:" << std::endl;
+        std::cout << "1. Display Building Information" << std::endl;
+        std::cout << "2. Add a Client" << std::endl;
+        std::cout << "3. Add a Floor" << std::endl;
+        std::cout << "4. Add a Room to a Floor" << std::endl;
+        std::cout << "5. Display All Clients" << std::endl;
+        std::cout << "6. Exit" << std::endl;
 
-    Camera camera(1, &etaj, 32, "neagra", "single");
+        std::cout << "Enter your choice (1-6): ";
+        std::cin >> choice;
 
-    Etaj* cameraEtaj = camera.getEtaj();
-    std::cout << cameraEtaj->getId() << std::endl;
+        switch (choice) {
+            case 1:
+                std::cout << cladire << std::endl;
+                break;
+            case 2: {
+                std::string name, email;
+                int age;
+                bool isVIP;
 
-    std::cout << camera << std::endl;
+                std::cout << "Enter client name: ";
+                std::cin >> name;
 
-    Angajati angajat(1, &etaj, 4000, "Mircea");
-    std::cout << angajat << std::endl;
+                std::cout << "Enter client age: ";
+                std::cin >> age;
 
-    Etaj etaj1(1, nullptr, 1, true);
-    Etaj etaj2(2, nullptr, 2, false);
-    Camera camera1(1, &etaj1, 101, "red", "wide");
-    Camera camera2(2, &etaj2, 102, "blue", "telephoto");
-    Angajati angajat1(1, &etaj, 3000, "John Doe");
-    Angajati angajat2(2, &etaj, 4000, "Jane Doe");
+                std::cout << "Enter client email: ";
+                std::cin >> email;
 
-    std::cout << camera1.getId() << std::endl;
-    std::cout << camera1.getNr() << std::endl;
-    std::cout << camera1.getCuloare() << std::endl;
-    std::cout << camera1.getTip() << std::endl;
-    camera1.setId(201);
-    camera1.setNr(202);
-    camera1.setCuloare("green");
-    camera1.setTip("macro");
-    std::cout << camera1.getId() << std::endl;
-    std::cout << camera1.getNr() << std::endl;
-    std::cout << camera1.getCuloare() << std::endl;
-    std::cout << camera1.getTip() << std::endl;
-    camera1.setEtaj(&etaj2);
-    std::cout << camera1 << std::endl;
+                std::cout << "Is the client VIP? (1 for yes, 0 for no): ";
+                std::cin >> isVIP;
 
-    std::cout << angajat1.getId() << std::endl;
-    std::cout << angajat1.getSalariu() << std::endl;
-    std::cout << angajat1.getNume() << std::endl;
-    angajat1.setId(101);
-    angajat1.setSalariu(3500);
-    angajat1.setNume("John Smith");
-    std::cout << angajat1.getId() << std::endl;
-    std::cout << angajat1.getSalariu() << std::endl;
-    std::cout << angajat1.getNume() << std::endl;
-    std::cout << angajat1 << std::endl;
+                cladire.addClient(Client(name, age, email, isVIP));
+                break;
+            }
+            case 3: {
+                int floorId;
+                std::cout << "Enter floor ID: ";
+                std::cin >> floorId;
+
+                std::string floorAddress, floorName;
+                std::cout << "Enter floor address: ";
+                std::cin >> floorAddress;
+
+                std::cout << "Enter floor name: ";
+                std::cin >> floorName;
+
+                break;
+            }
+            case 4: {
+                int floorId, roomId;
+                std::cout << "Enter floor ID: ";
+                std::cin >> floorId;
+
+                std::cout << "Enter room ID: ";
+                std::cin >> roomId;
+
+                std::string roomColor, roomType;
+                std::cout << "Enter room color: ";
+                std::cin >> roomColor;
+
+                std::cout << "Enter room type: ";
+                std::cin >> roomType;
+
+                cladire.addRoomToFloor(floorId,cameraInstance);
+                break;
+            }
+            case 5:
+                std::cout << "Exiting the program. Goodbye!" << std::endl;
+                break;
+            default:
+                std::cout << "Invalid choice. Please enter a number between 1 and 6." << std::endl;
+        }
+
+    } while (choice != 6);
+
+    Angajati angajat;
+
+    int initialSalary = 5000;
+
+    Angajati::maresteSalariu(10, initialSalary);
+
+    std::cout << angajat;
 
     return 0;
 }
