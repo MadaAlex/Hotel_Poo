@@ -6,6 +6,8 @@
 int main() {
     Cladire cladire(1, "Sample Address", "Building 1");
     Camera cameraInstance(1, 101, "red", "double");
+    Angajati angajat;
+
     int choice;
 
     do {
@@ -14,7 +16,7 @@ int main() {
         std::cout << "2. Add a Client" << std::endl;
         std::cout << "3. Add a Floor" << std::endl;
         std::cout << "4. Add a Room to a Floor" << std::endl;
-        std::cout << "5. Display All Clients" << std::endl;
+        std::cout << "5. Salariu" << std::endl;
         std::cout << "6. Exit" << std::endl;
 
         std::cout << "Enter your choice (1-6): ";
@@ -76,22 +78,27 @@ int main() {
                 cladire.addRoomToFloor(floorId,cameraInstance);
                 break;
             }
-            case 5:
+            case 5: {
+                int percentageIncrease;
+                int salariu = 5000;
+
+                std::cout << "Enter percentage increase for salary: ";
+                std::cin >> percentageIncrease;
+
+                Angajati::maresteSalariu(percentageIncrease, salariu);
+
+                std::cout << "Annual Salary: " << angajat.calculeazaSalariuAnual() << std::endl;
+                break;
+            }
+            case 6:
                 std::cout << "Exiting the program. Goodbye!" << std::endl;
                 break;
             default:
                 std::cout << "Invalid choice. Please enter a number between 1 and 6." << std::endl;
         }
 
-    } while (choice != 6);
+    } while (choice != 7);
 
-    Angajati angajat;
-
-    int initialSalary = 5000;
-
-    Angajati::maresteSalariu(10, initialSalary);
-
-    std::cout << angajat;
 
     return 0;
 }

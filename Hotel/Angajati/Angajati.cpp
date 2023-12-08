@@ -10,10 +10,8 @@ Angajati::Angajati(int idd, int Salariu, std::string Nume)
 {
 }
 
-[[maybe_unused]] Angajati::Angajati(const Angajati & src){
-    id = src.id;
-    salariu = src.salariu;
-    nume = src.nume;
+Angajati::Angajati(const Angajati &src)
+        : id(src.id), salariu(src.salariu), nume(src.nume) {
 }
 
 Angajati::~Angajati()
@@ -48,10 +46,10 @@ Angajati &Angajati::operator=(const Angajati &ang)
 
 }
 
-[[maybe_unused]] [[nodiscard]] double Angajati::calculeazaSalariuAnual() const {
+double Angajati::calculeazaSalariuAnual() const {
     return salariu * 12;
 }
 
-[[maybe_unused]] void Angajati::maresteSalariu(int procent, int salariu) {
-    salariu += salariu * (procent/100);
+[[maybe_unused]] void Angajati::maresteSalariu(int procent, int &salariu) {
+    salariu += salariu * (procent / 100);
 }

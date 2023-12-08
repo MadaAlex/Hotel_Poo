@@ -25,7 +25,7 @@ public:
 //    void eliminaCamera(int cameraId);
 
 
-    int getId() const;
+    [[nodiscard]] int getId() const;
 };
 
 #endif // CAMERA_H

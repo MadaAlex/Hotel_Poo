@@ -45,6 +45,7 @@ int Etaj::getId() const {
     return id;
 }
 
-void Etaj::addRoom(const Camera &camera) {
+
+void Etaj::addRoom([[maybe_unused]] const Camera &camera) {
 
 }

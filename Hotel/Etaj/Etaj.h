@@ -27,7 +27,7 @@ public:
 
     [[nodiscard]] int getId() const;
 
-    void addRoom(const Camera &camera);
+    void addRoom([[maybe_unused]] const Camera &camera);
 };
 
 #endif // ETAJ_H

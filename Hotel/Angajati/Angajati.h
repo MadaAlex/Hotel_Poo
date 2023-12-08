@@ -26,11 +26,12 @@ public:
 
     [[maybe_unused]] void adaugaSubaltern(const Angajati&);
 
-    [[maybe_unused]] void curataCamera(Camera& cam);
+    [[maybe_unused]] [[maybe_unused]] void curataCamera(Camera& cam);
 
-    [[maybe_unused]] [[nodiscard]] double calculeazaSalariuAnual() const;
+    [[nodiscard]] double calculeazaSalariuAnual() const;
 
-    [[maybe_unused]] static void maresteSalariu(int procent, int salariu);
+    static void maresteSalariu(int procent, int &initialSalary);
+
 
 };
 
