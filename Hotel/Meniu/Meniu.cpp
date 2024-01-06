@@ -120,40 +120,42 @@ void Meniu::run() {
                     break;
                 }
                 case 6: {
+
                     int managerId, subordinateId;
 
                     std::cout << "Enter manager's ID: ";
                     std::cin >> managerId;
 
                     std::cout << "Enter subordinate's ID: ";
-
                     std::cin >> subordinateId;
 
                     std::vector<Angajati> angajatiList;
 
                     try {
 
-                        Angajati* manager = nullptr;
+                        Angajati manager(managerId, 3000, "ManagerName");
+                        angajatiList.push_back(manager);
+
+                        Angajati* managerPtr = nullptr;
                         for (auto& angajat1 : angajatiList) {
                             if (angajat1.getId() == managerId) {
-                                manager = &angajat1;
+                                managerPtr = &angajat1;
                                 break;
                             }
                         }
 
-                        if (!manager) {
+                        if (!managerPtr) {
                             throw std::invalid_argument("Manager with the given ID not found.");
                         }
 
-
-
+                        // Add a subordinate to the list
                         Angajati subordinate(subordinateId, 2000, "John");
-                        manager->adaugaSubaltern(subordinate);
+                        managerPtr->adaugaSubaltern(subordinate);
 
                     } catch (const std::invalid_argument& e) {
                         std::cerr << "Error: " << e.what() << std::endl;
                     }
-                    break;
+
 
                 }
                 case 7: {
