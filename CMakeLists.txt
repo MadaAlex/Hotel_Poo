@@ -100,7 +100,9 @@ add_executable(${PROJECT_NAME} main.cpp
         Hotel/Angajati/Angajati.cpp
         Hotel/Angajati/Angajati.h
         Hotel/Client/Client.cpp
-        Hotel/Client/Client.h)
+        Hotel/Client/Client.h
+        Hotel/Meniu/Meniu.cpp
+        Hotel/Meniu/Meniu.h)
 
 ###############################################################################
 

@@ -3,24 +3,27 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
+#include <stdexcept>
 
-class Client
-{
+class Client {
+public:
+    Client();
+    Client(std::string name, int age, std::string email, bool vip);
+    ~Client();
+
+    [[maybe_unused]] [[maybe_unused]] void doClientSpecificTask();
+    Client& operator=(const Client& other);
+    friend std::ostream& operator<<(std::ostream& os, const Client& client);
+
 private:
     std::string clientName;
     int clientAge;
     std::string email;
     bool isVIP;
 
-public:
-    Client();
-    ~Client();
-    Client(std::string  name, int age, std::string  email, bool vip);
-    Client& operator=(const Client& other);
-    friend std::ostream& operator<<(std::ostream& os, const Client& client);
+    void validateAge(int age);
 
-    [[maybe_unused]] void doClientSpecificTask();
+    [[maybe_unused]] static void validateEmail(const std::string& email);
 };
 
 #endif // CLIENT_H

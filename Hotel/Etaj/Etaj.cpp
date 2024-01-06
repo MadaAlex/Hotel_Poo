@@ -1,24 +1,34 @@
-// Etaj.cpp
-#include <algorithm>
 #include "Etaj.h"
+#include <stdexcept>
 
-Etaj::Etaj() : id(0), nr(0) {}
+Etaj::Etaj() : id(0), nr(0), cameraPointer(nullptr) {}
 
 Etaj::Etaj(const Etaj &etj)
-        : id(etj.id), nr(etj.nr), camere(etj.camere)
-        {
+        : id(etj.id), nr(etj.nr)
+{
+    // Deep copy for the Camera pointer
+    if (etj.cameraPointer) {
+        cameraPointer = new Camera(*etj.cameraPointer);
+    } else {
+        cameraPointer = nullptr;
+    }
 }
 
 Etaj::~Etaj()
 {
-    std::cout << "Etaj destrutor" <<"\n";
+    delete cameraPointer;  // Release memory
+    std::cout << "Etaj destructor" << "\n";
 }
 
-
-[[maybe_unused]] void Etaj::adaugaCamera(const Camera& camera)
-{
-    camere.push_back(camera);
-}
+// If you decide to implement adaugaCamera using pointers, handle memory allocation appropriately.
+// void Etaj::adaugaCamera(Camera* camera)
+// {
+//     if (camera->getRoomNumber() < 0) {
+//         throw std::invalid_argument("Invalid argument: Room number must be non-negative.");
+//     }
+//
+//     cameraPointer = camera;
+// }
 
 Etaj& Etaj::operator=(const Etaj& other)
 {
@@ -26,25 +36,28 @@ Etaj& Etaj::operator=(const Etaj& other)
     {
         id = other.id;
         nr = other.nr;
-        camere = other.camere;
+
+        // Deep copy for the Camera pointer
+        delete cameraPointer;  // Release existing memory
+        if (other.cameraPointer) {
+            cameraPointer = new Camera(*other.cameraPointer);
+        } else {
+            cameraPointer = nullptr;
+        }
     }
     return *this;
 }
 
 std::ostream& operator<<(std::ostream& os, const Etaj& etaj) {
-    os << "Etaj ID: " << etaj.id << ", Numar: " << etaj.nr << "\nCamere:";
-    for (const auto &camera: etaj.camere) {
-        os << "\n" << camera;
+    os << "Etaj ID: " << etaj.id << ", Numar: " << etaj.nr << "\n";
+    if (etaj.cameraPointer) {
+        os << "Camera:\n" << *(etaj.cameraPointer);
+    } else {
+        os << "No Camera\n";
     }
     return os;
 }
 
-
 int Etaj::getId() const {
     return id;
-}
-
-
-void Etaj::addRoom([[maybe_unused]] const Camera &camera) {
-
 }
