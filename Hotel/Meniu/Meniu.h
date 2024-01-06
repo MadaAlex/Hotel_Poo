@@ -17,6 +17,7 @@ private:
     Cladire cladire;
     Camera cameraInstance;
     Angajati angajat;
+    Etaj etaj;
 };
 
 #endif  // MENIU_H

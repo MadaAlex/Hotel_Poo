@@ -58,8 +58,16 @@ void Meniu::run() {
                 std::cout << "Enter floor name: ";
                 std::cin >> floorName;
 
+
+
+                etaj.setId(floorId);
+                etaj.setAddress(floorAddress);
+                etaj.setName(floorName);
+
+
                 break;
             }
+
             case 4: {
                 int floorId, roomId;
                 std::cout << "Enter floor ID: ";
@@ -75,6 +83,7 @@ void Meniu::run() {
                 std::cout << "Enter room type: ";
                 std::cin >> roomType;
 
+                etaj.adaugaCamera(reinterpret_cast<Camera *>(roomId));
                 break;
             }
             case 5: {
@@ -86,7 +95,8 @@ void Meniu::run() {
 
                 Angajati::maresteSalariu(percentageIncrease, salariu);
 
-                std::cout << "Annual Salary: " << angajat.calculeazaSalariuAnual() << std::endl;
+
+                std::cout << "Annual Salary: "  << std::endl;
                 break;
             }
             case 6:

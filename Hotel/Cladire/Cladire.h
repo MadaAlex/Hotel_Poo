@@ -20,7 +20,6 @@ public:
 
     void addClient(const Client &client);
     [[maybe_unused]] void addFloor(const Etaj &etaj);
-    void addRoomToFloor(int floorId, const Camera &camera);
 
 private:
     int id;
@@ -29,6 +28,8 @@ private:
     std::string name;
     std::vector<Etaj> etaje;
     std::vector<Client> clienti;
+
+    [[maybe_unused]] void addFloor(int floorId, const Etaj &etaj);
 };
 
 #endif // CLADIRE_H

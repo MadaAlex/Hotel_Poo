@@ -66,7 +66,7 @@ Angajati &Angajati::operator=(const Angajati &ang)
     std::cout << "Angajatul cu numele " << nume << " curata camera cu Id-ul " << cam.getId() << std::endl;
 }
 
-double Angajati::calculeazaSalariuAnual() const {
+[[maybe_unused]] double Angajati::calculeazaSalariuAnual() const {
     return salariu * 12;
 }
 

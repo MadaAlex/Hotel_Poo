@@ -42,12 +42,23 @@ void Cladire::addClient(const Client &client)
     etaje.push_back(etaj);
 }
 
-//void Cladire::addRoomToFloor(int floorId, const Camera &camera)
-//{
-//    if (static_cast<std::vector<Etaj>::size_type>(floorId) >= etaje.size())
-//    {
-//        throw std::out_of_range("Invalid floor ID.");
-//    }
-//
-//    etaje[floorId].adaugaCamera(camera);
-//}
+[[maybe_unused]] void Cladire::addFloor(int floorId, const Etaj &etaj)
+{
+
+    if (static_cast<std::vector<Etaj>::size_type>(floorId) >= etaje.size())
+    {
+        throw std::out_of_range("Invalid floor ID.");
+    }
+
+
+    if (static_cast<std::vector<Etaj>::size_type>(floorId) >= etaje.size())
+
+    {
+        etaje[floorId] = etaj;
+    }
+    else
+    {
+        etaje.push_back(etaj);
+    }
+}
+
