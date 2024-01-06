@@ -51,8 +51,15 @@ void Meniu::run() {
                     } else {
                         std::cout << "Invalid email. Client not added." << std::endl;
                     }
-
                     cladire.addClient(Client(name, age, email, isVIP));
+
+
+                    Client newClient(name, age, email, isVIP);
+                    cladire.addClient(newClient);
+
+
+                    newClient.doClientSpecificTask();
+
                     break;
                 }
                 case 3: {
@@ -105,6 +112,9 @@ void Meniu::run() {
                     std::cin >> percentageIncrease;
 
                     Angajati::maresteSalariu(percentageIncrease, salariu);
+
+
+                    std::cout << "Annual Salary: " << angajat.calculeazaSalariuAnual() << std::endl;
                     break;
                 }
                 case 6: {
@@ -140,7 +150,7 @@ void Meniu::run() {
 
 bool Meniu::isValidEmail(const std::string& email) {
     try {
-        // Call the static function using the class name
+
         Client::validateEmail(email);
         return true;
     } catch (const std::invalid_argument& e) {

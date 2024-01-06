@@ -21,7 +21,7 @@ public:
 
     [[maybe_unused]] void adaugaSubaltern(const Angajati &angajat);
 
-    [[maybe_unused]] [[nodiscard]]  double calculeazaSalariuAnual() const;
+     double calculeazaSalariuAnual() const ;
     [[maybe_unused]] static void maresteSalariu(int procent, int &salariu);
     friend class Meniu;
 
