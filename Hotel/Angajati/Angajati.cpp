@@ -48,7 +48,7 @@ Angajati &Angajati::operator=(const Angajati &ang)
 }
 
 [[maybe_unused]] void Angajati::adaugaSubaltern(const Angajati& angajat) {
-    // Check for duplicates
+
     for (const auto &sub : subalterni) {
         if (sub.id == angajat.id) {
             throw std::invalid_argument("Angajatul cu acest ID este deja un subaltern.");
@@ -59,7 +59,7 @@ Angajati &Angajati::operator=(const Angajati &ang)
 
 
 [[maybe_unused]] void Angajati::curataCamera(const Camera &cam) {
-    // Check if the employee is qualified to clean the camera
+
     if (salariu < MIN_SALARY_FOR_CLEANING) {
         throw std::logic_error("Angajatul nu are salariu suficient pentru a curata camera.");
     }
@@ -70,8 +70,8 @@ Angajati &Angajati::operator=(const Angajati &ang)
     return salariu * 12;
 }
 
-[[maybe_unused]] void Angajati::maresteSalariu(int procent, int &salariu) {
-    // Validate input parameters
+ void Angajati::maresteSalariu(int procent, int &salariu) {
+
     if (procent < 0) {
         throw std::invalid_argument("Invalid argument: Procent must be non-negative.");
     }

@@ -32,7 +32,7 @@ private:
     std::string nume;
     std::vector<Angajati> subalterni;
 
-    void curataCamera(const Camera &cam);
+    [[maybe_unused]] void curataCamera(const Camera &cam);
 };
 
 #endif // ANGAJATI_H

@@ -17,7 +17,7 @@ public:
     Camera &operator=(const Camera &cmr);
 
     [[nodiscard]] int getId() const;
-    [[maybe_unused]] [[nodiscard]] int getRoomNumber() const;
+    [[nodiscard]] int getRoomNumber() const;
 
     [[maybe_unused]] static void getEtaj();
 

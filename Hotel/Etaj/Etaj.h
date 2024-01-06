@@ -16,17 +16,17 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Etaj& etaj);
 
     [[maybe_unused]] [[nodiscard]] int getId() const;
-    void setId(int newId);  // New setter method for ID
-    void setAddress(const std::string& newAddress);  // New setter method for address
-    void setName(const std::string& newName);  // New setter method for name
+    void setId(int newId);
+    void setAddress(const std::string& newAddress);
+    void setName(const std::string& newName);
     void adaugaCamera(Camera *camera);
 
 private:
     int id;
     int nr;
     Camera* cameraPointer;
-    std::string address;  // New member variable for address
-    std::string name;  // New member variable for name
+    std::string address;
+    std::string name;
 };
 
 #endif // ETAJ_H
