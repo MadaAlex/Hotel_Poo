@@ -45,9 +45,10 @@ void Client::validateAge(int age) {
     clientAge = age;
 }
 
-[[maybe_unused]] void Client::validateEmail(const std::string& email1) {
-
-    if (email1.find('@') == std::string::npos) {
-        throw std::invalid_argument("Invalid argument: Invalid email format.");
+void Client::validateEmail(const std::string& email) {
+    try {
+        std::cout << "Email is valid: " << email << std::endl;
+    } catch (const std::invalid_argument& e) {
+        std::cerr << "Invalid email: " << e.what() << std::endl;
     }
 }

@@ -5,6 +5,7 @@
 
 #include "../Cladire/Cladire.h"
 #include "../Angajati/Angajati.h"
+#include "../Client/Client.h"
 #include <stdexcept>
 
 class MeniuException : public std::runtime_error {
@@ -33,6 +34,8 @@ private:
     Camera cameraInstance;
     Angajati angajat;
     Etaj etaj;
+
+    static bool isValidEmail(const std::string &email);
 };
 
 #endif  // MENIU_H

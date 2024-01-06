@@ -1,20 +1,15 @@
+// Client.h
+
 #ifndef CLIENT_H
 #define CLIENT_H
 
 #include <iostream>
-#include <string>
 #include <stdexcept>
+#include <string>
+
+class Meniu;  // Forward declaration
 
 class Client {
-public:
-    Client();
-    Client(std::string name, int age, std::string email, bool vip);
-    ~Client();
-
-    [[maybe_unused]] [[maybe_unused]] void doClientSpecificTask();
-    Client& operator=(const Client& other);
-    friend std::ostream& operator<<(std::ostream& os, const Client& client);
-
 private:
     std::string clientName;
     int clientAge;
@@ -23,7 +18,22 @@ private:
 
     void validateAge(int age);
 
-    [[maybe_unused]] static void validateEmail(const std::string& email);
+
+public:
+    Client();
+    Client(std::string name, int age, std::string email, bool vip);
+    ~Client();
+
+    [[maybe_unused]] void doClientSpecificTask();
+
+    Client& operator=(const Client& other);
+
+    friend std::ostream& operator<<(std::ostream& os, const Client& client);
+
+    static void validateEmail(const std::string& email);
+
+
+    friend class Meniu;
 };
 
-#endif // CLIENT_H
+#endif  // CLIENT_H

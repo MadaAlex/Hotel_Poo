@@ -23,8 +23,8 @@ public:
 
     [[maybe_unused]] [[nodiscard]]  double calculeazaSalariuAnual() const;
     [[maybe_unused]] static void maresteSalariu(int procent, int &salariu);
+    friend class Meniu;
 
-    // Add getters for id and salariu if needed
 
 private:
     int id;

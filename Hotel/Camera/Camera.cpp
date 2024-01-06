@@ -40,7 +40,7 @@ int Camera::getId() const
     return nr;
 }
 
-[[maybe_unused]] void Camera::getEtaj()
-{
-    throw std::logic_error("Etaj is not set for this camera.");
+
+Etaj* Camera::getEtaj() {
+    return etaj;
 }
