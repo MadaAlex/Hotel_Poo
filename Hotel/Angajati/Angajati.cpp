@@ -10,7 +10,7 @@ Angajati::Angajati()
 Angajati::Angajati(int idd, int Salariu, std::string Nume)
         : id(idd), salariu(Salariu), nume(std::move(Nume))
 {
-    // Validate input parameters
+
     if (id < 0 || salariu < 0) {
         throw std::invalid_argument("Invalid argument: ID and salariu must be non-negative.");
     }
@@ -35,7 +35,7 @@ Angajati &Angajati::operator=(const Angajati &ang)
 {
     if (this != &ang)
     {
-        // Validate input parameters
+
         if (ang.id < 0 || ang.salariu < 0) {
             throw std::invalid_argument("Invalid argument: ID and salariu must be non-negative.");
         }
