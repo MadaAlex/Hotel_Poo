@@ -156,7 +156,7 @@ void Meniu::run() {
                         std::cerr << "Error: " << e.what() << std::endl;
                     }
 
-
+                    break;  // Add this break statement
                 }
                 case 7: {
                     int roomId;
