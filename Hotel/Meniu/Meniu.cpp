@@ -4,7 +4,6 @@
 #include <iostream>
 
 Meniu::Meniu() : cladire(1, "Sample Address", "Building 1"), cameraInstance(1, 101, "red", "double") {
-
 }
 
 void Meniu::run() {
@@ -17,9 +16,10 @@ void Meniu::run() {
         std::cout << "3. Add a Floor" << std::endl;
         std::cout << "4. Add a Room to a Floor" << std::endl;
         std::cout << "5. Salariu" << std::endl;
-        std::cout << "6. Exit" << std::endl;
+        std::cout << "6. Add a Subordinate to an Employee" << std::endl;
+        std::cout << "7. Exit" << std::endl;
 
-        std::cout << "Enter your choice (1-6): ";
+        std::cout << "Enter your choice (1-7): ";
         std::cin >> choice;
 
         switch (choice) {
@@ -59,15 +59,13 @@ void Meniu::run() {
                 std::cin >> floorName;
 
 
-
                 etaj.setId(floorId);
                 etaj.setAddress(floorAddress);
                 etaj.setName(floorName);
 
-
+                cladire.addFloor(etaj);
                 break;
             }
-
             case 4: {
                 int floorId, roomId;
                 std::cout << "Enter floor ID: ";
@@ -83,7 +81,8 @@ void Meniu::run() {
                 std::cout << "Enter room type: ";
                 std::cin >> roomType;
 
-                etaj.adaugaCamera(reinterpret_cast<Camera *>(roomId));
+                Camera camera(roomId, floorId, roomColor, roomType);
+
                 break;
             }
             case 5: {
@@ -95,16 +94,26 @@ void Meniu::run() {
 
                 Angajati::maresteSalariu(percentageIncrease, salariu);
 
-
-                std::cout << "Annual Salary: "  << std::endl;
+                //std::cout << "Annual Salary: " << Angajati::calculeazaSalariuAnual() << std::endl;
                 break;
             }
-            case 6:
+            case 6: {
+                int managerId, subordinateId;
+
+                std::cout << "Enter manager's ID: ";
+                std::cin >> managerId;
+
+                std::cout << "Enter subordinate's ID: ";
+                std::cin >> subordinateId;
+
+                break;
+            }
+            case 7:
                 std::cout << "Exiting the program. Goodbye!" << std::endl;
                 break;
             default:
-                std::cout << "Invalid choice. Please enter a number between 1 and 6." << std::endl;
+                std::cout << "Invalid choice. Please enter a number between 1 and 7." << std::endl;
         }
 
-    } while (choice != 6);
+    } while (choice != 7);
 }

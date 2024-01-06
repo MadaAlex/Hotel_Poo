@@ -22,7 +22,7 @@ public:
     [[maybe_unused]] void adaugaSubaltern(const Angajati &angajat);
     [[maybe_unused]] void curataCamera(Camera &cam);
 
-    [[maybe_unused]] [[nodiscard]] double calculeazaSalariuAnual() const;
+    [[maybe_unused]] [[nodiscard]]  double calculeazaSalariuAnual() const;
     [[maybe_unused]] static void maresteSalariu(int procent, int &salariu);
 
     // Add getters for id and salariu if needed
