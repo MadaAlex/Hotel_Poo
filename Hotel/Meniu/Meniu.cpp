@@ -7,7 +7,7 @@ Meniu::Meniu() : cladire(1, "Sample Address", "Building 1"), cameraInstance(1, 1
 }
 
 void Meniu::run() {
-    int choice;
+    int choice = 0;  // Initialize choice before the loop
 
     do {
         try {
@@ -156,7 +156,9 @@ void Meniu::run() {
                         std::cerr << "Error: " << e.what() << std::endl;
                     }
 
-                    break;  // Add this break statement
+                    break;
+
+                    // Add this break statement
                 }
                 case 7: {
                     int roomId;
