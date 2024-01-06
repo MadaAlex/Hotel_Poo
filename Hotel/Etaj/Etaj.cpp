@@ -58,6 +58,6 @@ std::ostream& operator<<(std::ostream& os, const Etaj& etaj) {
     return os;
 }
 
-int Etaj::getId() const {
+[[maybe_unused]] int Etaj::getId() const {
     return id;
 }

@@ -12,7 +12,8 @@ class Cladire {
 public:
     Cladire();
     Cladire(int id, std::string adresa, std::string name);
-    Cladire(const Cladire &src);
+
+    [[maybe_unused]] Cladire(const Cladire &src);
     ~Cladire();
 
     friend std::ostream &operator<<(std::ostream &os, const Cladire &cladire);

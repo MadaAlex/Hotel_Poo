@@ -13,7 +13,7 @@ public:
     Etaj& operator=(const Etaj& other);
     friend std::ostream& operator<<(std::ostream& os, const Etaj& etaj);
 
-    [[nodiscard]] int getId() const;
+    [[maybe_unused]] [[nodiscard]] int getId() const;
     //void adaugaCamera(Camera camera);
 
 private:

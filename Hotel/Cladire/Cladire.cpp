@@ -5,7 +5,7 @@ Cladire::Cladire() : id(0), areLift(false) {}
 Cladire::Cladire(int id, std::string adresa, std::string name)
         : id(id), areLift(false), adresa(std::move(adresa)), name(std::move(name)) {}
 
-Cladire::Cladire(const Cladire &src)
+[[maybe_unused]] Cladire::Cladire(const Cladire &src)
         : id(src.id), areLift(src.areLift), adresa(src.adresa), name(src.name), etaje(src.etaje), clienti(src.clienti) {}
 
 Cladire::~Cladire()
