@@ -19,12 +19,22 @@ public:
     friend std::ostream &operator<<(std::ostream &os, const Angajati &ang);
     Angajati &operator=(const Angajati &ang);
 
-    [[maybe_unused]] void adaugaSubaltern(const Angajati &angajat);
+    [[maybe_unused]] [[maybe_unused]] void adaugaSubaltern(const Angajati &angajat);
 
-     double calculeazaSalariuAnual() const ;
-    [[maybe_unused]] static void maresteSalariu(int procent, int &salariu);
+     [[nodiscard]] double calculeazaSalariuAnual() const ;
+     static void maresteSalariu(int procent, int &salariu);
     friend class Meniu;
 
+
+    void curataCamera(const Camera &cam);
+
+    [[maybe_unused]] [[nodiscard]] const std::vector<Angajati>& getSubalterni() const {
+        return subalterni;
+    }
+
+    [[nodiscard]] int getId() const {
+        return id;
+    }
 
 private:
     int id;
@@ -32,7 +42,6 @@ private:
     std::string nume;
     std::vector<Angajati> subalterni;
 
-    [[maybe_unused]] void curataCamera(const Camera &cam);
 };
 
 #endif // ANGAJATI_H

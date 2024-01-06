@@ -3,12 +3,12 @@
 #include <stdexcept>
 
 Angajati::Angajati()
-        : id(0), salariu(0)
+        : id(0),  salariu(0)
 {
 }
 
 Angajati::Angajati(int idd, int Salariu, std::string Nume)
-        : id(idd), salariu(Salariu), nume(std::move(Nume))
+        : id(idd),  salariu(Salariu),nume(std::move(Nume))
 {
 
     if (id < 0 || salariu < 0) {
@@ -48,17 +48,20 @@ Angajati &Angajati::operator=(const Angajati &ang)
 }
 
 [[maybe_unused]] void Angajati::adaugaSubaltern(const Angajati& angajat) {
+    const auto& subalternList = getSubalterni();
 
-    for (const auto &sub : subalterni) {
-        if (sub.id == angajat.id) {
+    for (const auto& sub : subalternList) {
+        if (sub.getId() == angajat.getId()) {
             throw std::invalid_argument("Angajatul cu acest ID este deja un subaltern.");
         }
     }
+
     subalterni.push_back(angajat);
 }
 
 
-[[maybe_unused]] void Angajati::curataCamera(const Camera &cam) {
+
+void Angajati::curataCamera(const Camera &cam) {
 
     if (salariu < MIN_SALARY_FOR_CLEANING) {
         throw std::logic_error("Angajatul nu are salariu suficient pentru a curata camera.");
@@ -78,3 +81,4 @@ double Angajati::calculeazaSalariuAnual() const  {
 
     salariu += salariu * (procent / 100);
 }
+

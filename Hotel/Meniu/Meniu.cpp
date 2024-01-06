@@ -100,8 +100,10 @@ void Meniu::run() {
                     std::cout << "Enter room type: ";
                     std::cin >> roomType;
 
-                    Camera camera(roomId, floorId, roomColor, roomType);
-                    camera.getEtaj();
+                    auto* newCamera = new Camera(roomId, floorId, roomColor, roomType);
+
+
+                    etaj.adaugaCamera(newCamera);
                     break;
                 }
                 case 5: {
@@ -124,8 +126,34 @@ void Meniu::run() {
                     std::cin >> managerId;
 
                     std::cout << "Enter subordinate's ID: ";
+
                     std::cin >> subordinateId;
+
+                    std::vector<Angajati> angajatiList;
+
+                    try {
+
+                        Angajati* manager = nullptr;
+                        for (auto& angajat1 : angajatiList) {
+                            if (angajat1.getId() == managerId) {
+                                manager = &angajat1;
+                                break;
+                            }
+                        }
+
+                        if (!manager) {
+                            throw std::invalid_argument("Manager with the given ID not found.");
+                        }
+
+
+                        Angajati subordinate(subordinateId, 2000, "John");
+                        manager->adaugaSubaltern(subordinate);
+
+                    } catch (const std::invalid_argument& e) {
+                        std::cerr << "Error: " << e.what() << std::endl;
+                    }
                     break;
+
                 }
                 case 7: {
                     int roomId;
