@@ -58,7 +58,6 @@ void Meniu::run() {
                 std::cout << "Enter floor name: ";
                 std::cin >> floorName;
 
-                // Add logic for adding a floor
                 break;
             }
             case 4: {

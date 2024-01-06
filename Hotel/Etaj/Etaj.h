@@ -14,7 +14,7 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Etaj& etaj);
 
     [[maybe_unused]] [[nodiscard]] int getId() const;
-    //void adaugaCamera(Camera camera);
+    void adaugaCamera(Camera *camera);
 
 private:
     int id;

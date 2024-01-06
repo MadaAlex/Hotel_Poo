@@ -5,6 +5,7 @@
 #include <string>
 #include <stdexcept>
 
+class Etaj;
 
 class Camera {
 public:
@@ -16,10 +17,9 @@ public:
     Camera &operator=(const Camera &cmr);
 
     [[nodiscard]] int getId() const;
-
     [[maybe_unused]] [[nodiscard]] int getRoomNumber() const;
 
-    [[maybe_unused]]   static void getEtaj() ;
+    [[maybe_unused]] static void getEtaj();
 
 private:
     int id;

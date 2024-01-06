@@ -1,4 +1,5 @@
 #include "Etaj.h"
+
 #include <stdexcept>
 
 Etaj::Etaj() : id(0), nr(0), cameraPointer(nullptr) {}
@@ -20,15 +21,22 @@ Etaj::~Etaj()
     std::cout << "Etaj destructor" << "\n";
 }
 
-// If you decide to implement adaugaCamera using pointers, handle memory allocation appropriately.
-// void Etaj::adaugaCamera(Camera* camera)
-// {
-//     if (camera->getRoomNumber() < 0) {
-//         throw std::invalid_argument("Invalid argument: Room number must be non-negative.");
-//     }
-//
-//     cameraPointer = camera;
-// }
+void Etaj::adaugaCamera(Camera* camera)
+{
+    if (camera->getRoomNumber() < 0) {
+        throw std::invalid_argument("Invalid argument: Room number must be non-negative.");
+    }
+
+    // Release existing memory
+    delete cameraPointer;
+
+    // Deep copy for the Camera pointer
+    if (camera) {
+        cameraPointer = new Camera(*camera);
+    } else {
+        cameraPointer = nullptr;
+    }
+}
 
 Etaj& Etaj::operator=(const Etaj& other)
 {
@@ -37,8 +45,10 @@ Etaj& Etaj::operator=(const Etaj& other)
         id = other.id;
         nr = other.nr;
 
+        // Release existing memory
+        delete cameraPointer;
+
         // Deep copy for the Camera pointer
-        delete cameraPointer;  // Release existing memory
         if (other.cameraPointer) {
             cameraPointer = new Camera(*other.cameraPointer);
         } else {

@@ -1,6 +1,4 @@
 #include "Camera.h"
-#include <iostream>
-#include <stdexcept>
 
 
 Camera::Camera(int idd, int nmr, std::string clr, std::string tp)
@@ -42,25 +40,7 @@ int Camera::getId() const
     return nr;
 }
 
-
-
 [[maybe_unused]] void Camera::getEtaj()
 {
-
     throw std::logic_error("Etaj is not set for this camera.");
 }
-
-
-//[[maybe_unused]] void Etaj::adaugaCamera([[maybe_unused]] int cameraId)
-//{
-//
-//    for (const auto &c : camere)
-//    {
-//        if (c == cameraId)
-//        {
-//            throw std::invalid_argument("Camera with the same ID already exists on this floor.");
-//        }
-//    }
-//
-//    camere.push_back(cameraId);
-//}
