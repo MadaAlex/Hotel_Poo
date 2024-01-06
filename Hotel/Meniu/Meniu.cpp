@@ -7,7 +7,6 @@ Meniu::Meniu() : cladire(1, "Sample Address", "Building 1"), cameraInstance(1, 1
 }
 
 void Meniu::run() {
-    int choice = 0;  // Initialize choice before the loop
 
     do {
         try {

@@ -34,6 +34,7 @@ private:
     Camera cameraInstance;
     Angajati angajat;
     Etaj etaj;
+    int choice = 0;
 
     static bool isValidEmail(const std::string &email);
 };
