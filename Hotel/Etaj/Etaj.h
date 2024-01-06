@@ -15,7 +15,7 @@ public:
     Etaj& operator=(const Etaj& other);
     friend std::ostream& operator<<(std::ostream& os, const Etaj& etaj);
 
-    [[maybe_unused]] [[nodiscard]] int getId() const;
+     [[nodiscard]] int getId() const;
     void setId(int newId);
     void setAddress(const std::string& newAddress);
     void setName(const std::string& newName);

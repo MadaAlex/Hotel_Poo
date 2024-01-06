@@ -146,6 +146,7 @@ void Meniu::run() {
                         }
 
 
+
                         Angajati subordinate(subordinateId, 2000, "John");
                         manager->adaugaSubaltern(subordinate);
 

@@ -19,14 +19,12 @@ public:
     [[nodiscard]] int getId() const;
     [[nodiscard]] int getRoomNumber() const;
 
-   Etaj* getEtaj();
 
 private:
     int id;
     int nr;
     std::string culoare;
     std::string tip;
-    Etaj* etaj{};
 };
 
 #endif // CAMERA_H

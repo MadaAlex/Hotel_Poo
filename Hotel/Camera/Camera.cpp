@@ -40,7 +40,3 @@ int Camera::getId() const
     return nr;
 }
 
-
-Etaj* Camera::getEtaj() {
-    return etaj;
-}
