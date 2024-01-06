@@ -87,12 +87,12 @@ void Meniu::run() {
 
                     Camera camera(roomId, floorId, roomColor, roomType);
 
-                    // TODO: Add camera to the floor
+
                     break;
                 }
                 case 5: {
                     int percentageIncrease;
-                    int salariu = 5000;
+                    int salariu = 4000;
 
                     std::cout << "Enter percentage increase for salary: ";
                     std::cin >> percentageIncrease;

@@ -58,7 +58,7 @@ Angajati &Angajati::operator=(const Angajati &ang)
 }
 
 
-[[maybe_unused]] void Angajati::curataCamera(Camera &cam) {
+[[maybe_unused]] void Angajati::curataCamera(const Camera &cam) {
     // Check if the employee is qualified to clean the camera
     if (salariu < MIN_SALARY_FOR_CLEANING) {
         throw std::logic_error("Angajatul nu are salariu suficient pentru a curata camera.");

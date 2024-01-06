@@ -20,7 +20,6 @@ public:
     Angajati &operator=(const Angajati &ang);
 
     [[maybe_unused]] void adaugaSubaltern(const Angajati &angajat);
-    [[maybe_unused]] void curataCamera(Camera &cam);
 
     [[maybe_unused]] [[nodiscard]]  double calculeazaSalariuAnual() const;
     [[maybe_unused]] static void maresteSalariu(int procent, int &salariu);
@@ -32,6 +31,8 @@ private:
     int salariu;
     std::string nume;
     std::vector<Angajati> subalterni;
+
+    void curataCamera(const Camera &cam);
 };
 
 #endif // ANGAJATI_H

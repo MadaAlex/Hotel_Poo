@@ -24,9 +24,9 @@ public:
 
 class Meniu {
 public:
-    Meniu();  // Constructor (if needed)
+    Meniu();
 
-    void run();  // Function to run the menu program
+    void run();
 
 private:
     Cladire cladire;
