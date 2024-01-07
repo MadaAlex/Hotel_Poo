@@ -68,8 +68,11 @@ void Meniu::run() {
                         std::cout << "Enter floor ID: ";
                         std::cin >> floorId;
 
+                        std::cout << "Enter floor ID: ";
+                        std::cin >> floorId;
+
                         if (floorId < 0) {
-                            throw InvalidFloorIdException();
+                            std::cerr << "Warning: Negative floor ID. Continuing input." << std::endl;
                         }
 
                         std::string floorAddress, floorName;
@@ -84,6 +87,8 @@ void Meniu::run() {
                         etaj.setName(floorName);
 
                         cladire.addFloor(floorId, etaj);
+
+
                     } catch (const InvalidFloorIdException& e) {
                         std::cerr << "Error: " << e.what() << std::endl;
                     }
