@@ -1,9 +1,11 @@
-// Meniu.cpp
 
+// Meniu.cpp
 #include "Meniu.h"
 #include <iostream>
 
-Meniu::Meniu() : cladire(1, "Sample Address", "Building 1"), cameraInstance(1, 101, "red", "double"), angajat(1, 5000, "John Doe") {
+Meniu::Meniu() : cladire(1, "Sample Address", "Building 1"),
+                 cameraInstance(1, 101, "red", "double"),
+                 angajat(1, 5000, "John Doe") {
 }
 
 void Meniu::run() {
@@ -28,144 +30,155 @@ void Meniu::run() {
                     std::cout << cladire << std::endl;
                     break;
                 case 2: {
-                    std::string name, email;
-                    int age;
-                    bool isVIP;
+                    try {
+                        std::string name, email;
+                        int age;
+                        bool isVIP;
 
-                    std::cout << "Enter client name: ";
-                    std::cin >> name;
+                        std::cout << "Enter client name: ";
+                        std::cin >> name;
 
-                    std::cout << "Enter client age: ";
-                    std::cin >> age;
+                        std::cout << "Enter client age: ";
+                        std::cin >> age;
 
-                    std::cout << "Enter client email: ";
-                    std::cin >> email;
+                        std::cout << "Enter client email: ";
+                        std::cin >> email;
 
-                    std::cout << "Is the client VIP? (1 for yes, 0 for no): ";
-                    std::cin >> isVIP;
+                        std::cout << "Is the client VIP? (1 for yes, 0 for no): ";
+                        std::cin >> isVIP;
 
-                    if (isValidEmail(email)) {
+                        if (isValidEmail(email)) {
+                            cladire.addClient(Client(name, age, email, isVIP));
+                        } else {
+                            throw InvalidEmailException();
+                        }
 
-                        cladire.addClient(Client(name, age, email, isVIP));
-                    } else {
-                        std::cout << "Invalid email. Client not added." << std::endl;
+                        Client newClient(name, age, email, isVIP);
+                        cladire.addClient(newClient);
+
+                        newClient.doClientSpecificTask();
+                    } catch (const InvalidEmailException& e) {
+                        std::cerr << "Error: " << e.what() << std::endl;
                     }
-                    cladire.addClient(Client(name, age, email, isVIP));
-
-
-                    Client newClient(name, age, email, isVIP);
-                    cladire.addClient(newClient);
-
-
-                    newClient.doClientSpecificTask();
-
                     break;
                 }
                 case 3: {
-                    int floorId;
-                    std::cout << "Enter floor ID: ";
-                    std::cin >> floorId;
+                    try {
+                        int floorId;
+                        std::cout << "Enter floor ID: ";
+                        std::cin >> floorId;
 
-                    if (floorId < 0) {
-                        throw InvalidFloorIdException();
+                        if (floorId < 0) {
+                            throw InvalidFloorIdException();
+                        }
+
+                        std::string floorAddress, floorName;
+                        std::cout << "Enter floor address: ";
+                        std::cin >> floorAddress;
+
+                        std::cout << "Enter floor name: ";
+                        std::cin >> floorName;
+
+                        etaj.setId(floorId);
+                        etaj.setAddress(floorAddress);
+                        etaj.setName(floorName);
+
+                        cladire.addFloor(floorId, etaj);
+                    } catch (const InvalidFloorIdException& e) {
+                        std::cerr << "Error: " << e.what() << std::endl;
                     }
-
-                    std::string floorAddress, floorName;
-                    std::cout << "Enter floor address: ";
-                    std::cin >> floorAddress;
-
-                    std::cout << "Enter floor name: ";
-                    std::cin >> floorName;
-
-                    etaj.setId(floorId);
-                    etaj.setAddress(floorAddress);
-                    etaj.setName(floorName);
-
-                    cladire.addFloor(etaj);
                     break;
                 }
                 case 4: {
-                    int floorId, roomId;
-                    std::cout << "Enter floor ID: ";
-                    std::cin >> floorId;
+                    try {
+                        int floorId, roomId;
+                        std::cout << "Enter floor ID: ";
+                        std::cin >> floorId;
 
-                    std::cout << "Enter room ID: ";
-                    std::cin >> roomId;
+                        std::cout << "Enter room ID: ";
+                        std::cin >> roomId;
 
-                    std::string roomColor, roomType;
-                    std::cout << "Enter room color: ";
-                    std::cin >> roomColor;
+                        std::string roomColor, roomType;
+                        std::cout << "Enter room color: ";
+                        std::cin >> roomColor;
 
-                    std::cout << "Enter room type: ";
-                    std::cin >> roomType;
+                        std::cout << "Enter room type: ";
+                        std::cin >> roomType;
 
-                    auto* newCamera = new Camera(roomId, floorId, roomColor, roomType);
+                        auto* newCamera = new Camera(roomId, floorId, roomColor, roomType);
 
-
-                    etaj.adaugaCamera(newCamera);
+                        etaj.adaugaCamera(newCamera);
+                    } catch (const std::exception& e) {
+                        std::cerr << "Error: " << e.what() << std::endl;
+                    }
                     break;
                 }
                 case 5: {
-                    int percentageIncrease;
-                    int salariu = 4000;
+                    try {
+                        int percentageIncrease;
+                        int salariu = 4000;
 
-                    std::cout << "Enter percentage increase for salary: ";
-                    std::cin >> percentageIncrease;
+                        std::cout << "Enter percentage increase for salary: ";
+                        std::cin >> percentageIncrease;
 
-                    Angajati::maresteSalariu(percentageIncrease, salariu);
+                        Angajati::maresteSalariu(percentageIncrease, salariu);
 
-
-                    std::cout << "Annual Salary: " << angajat.calculeazaSalariuAnual() << std::endl;
+                        std::cout << "Annual Salary: " << angajat.calculeazaSalariuAnual() << std::endl;
+                    } catch (const std::exception& e) {
+                        std::cerr << "Error: " << e.what() << std::endl;
+                    }
                     break;
                 }
                 case 6: {
-
-                    int managerId, subordinateId;
-
-                    std::cout << "Enter manager's ID: ";
-                    std::cin >> managerId;
-
-                    std::cout << "Enter subordinate's ID: ";
-                    std::cin >> subordinateId;
-
-                    std::vector<Angajati> angajatiList;
-
                     try {
+                        int managerId, subordinateId;
 
-                        Angajati manager(managerId, 3000, "ManagerName");
-                        angajatiList.push_back(manager);
+                        std::cout << "Enter manager's ID: ";
+                        std::cin >> managerId;
 
-                        Angajati* managerPtr = nullptr;
-                        for (auto& angajat1 : angajatiList) {
-                            if (angajat1.getId() == managerId) {
-                                managerPtr = &angajat1;
-                                break;
+                        std::cout << "Enter subordinate's ID: ";
+                        std::cin >> subordinateId;
+
+                        std::vector<Angajati> angajatiList;
+
+                        try {
+                            Angajati manager(managerId, 3000, "ManagerName");
+                            angajatiList.push_back(manager);
+
+                            Angajati* managerPtr = nullptr;
+                            for (auto& angajat1 : angajatiList) {
+                                if (angajat1.getId() == managerId) {
+                                    managerPtr = &angajat1;
+                                    break;
+                                }
                             }
+
+                            if (!managerPtr) {
+                                throw ManagerNotFoundException();
+                            }
+
+                            Angajati subordinate(subordinateId, 2000, "John");
+                            managerPtr->adaugaSubaltern(subordinate);
+
+                        } catch (const ManagerNotFoundException& e) {
+                            std::cerr << "Error: " << e.what() << std::endl;
                         }
-
-                        if (!managerPtr) {
-                            throw std::invalid_argument("Manager with the given ID not found.");
-                        }
-
-                        // Add a subordinate to the list
-                        Angajati subordinate(subordinateId, 2000, "John");
-                        managerPtr->adaugaSubaltern(subordinate);
-
-                    } catch (const std::invalid_argument& e) {
+                    } catch (const std::exception& e) {
                         std::cerr << "Error: " << e.what() << std::endl;
                     }
-
                     break;
-
-                    // Add this break statement
                 }
                 case 7: {
-                    int roomId;
-                    std::cout << "Enter room ID to clean: ";
-                    std::cin >> roomId;
+                    try {
+                        int roomId;
+                        std::cout << "Enter room ID to clean: ";
+                        std::cin >> roomId;
 
-                    Camera roomToClean(roomId, 0, "white", "single");
-                    angajat.curataCamera(roomToClean);
+                        Camera roomToClean(roomId, 0, "white", "single");
+                        angajat.curataCamera(roomToClean);
+                    } catch (const std::exception& e) {
+                        std::cerr << "Error: " << e.what() << std::endl;
+                    }
                     break;
                 }
                 case 8:
@@ -182,7 +195,6 @@ void Meniu::run() {
 
 bool Meniu::isValidEmail(const std::string& email) {
     try {
-
         Client::validateEmail(email);
         return true;
     } catch (const std::invalid_argument& e) {
@@ -190,3 +202,4 @@ bool Meniu::isValidEmail(const std::string& email) {
         return false;
     }
 }
+

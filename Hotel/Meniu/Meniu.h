@@ -1,5 +1,4 @@
 // Meniu.h
-
 #ifndef MENIU_H
 #define MENIU_H
 
@@ -15,12 +14,27 @@ public:
 
 class InvalidChoiceException : public MeniuException {
 public:
-    InvalidChoiceException() : MeniuException("Invalid choice. Please enter a number between 1 and 7.") {}
+    InvalidChoiceException() : MeniuException("Invalid choice. Please enter a number between 1 and 8.") {}
 };
 
 class InvalidFloorIdException : public MeniuException {
 public:
-    InvalidFloorIdException() : MeniuException("Invalid floor ID.") {}
+    InvalidFloorIdException() : MeniuException("Invalid floor ID. Floor ID should be a non-negative integer.") {}
+};
+
+class InvalidEmailException : public MeniuException {
+public:
+    InvalidEmailException() : MeniuException("Invalid email format.") {}
+};
+
+class ManagerNotFoundException : public MeniuException {
+public:
+    ManagerNotFoundException() : MeniuException("Manager with the given ID not found.") {}
+};
+
+class InvalidRoomIdException : public MeniuException {
+public:
+    InvalidRoomIdException() : MeniuException("Invalid room ID. Room ID should be a positive integer.") {}
 };
 
 class Meniu {

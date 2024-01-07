@@ -35,7 +35,7 @@ int Camera::getId() const
     return id;
 }
 
-[[maybe_unused]] int Camera::getRoomNumber() const
+ int Camera::getRoomNumber() const
 {
     return nr;
 }
