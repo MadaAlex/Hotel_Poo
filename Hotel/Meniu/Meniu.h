@@ -47,6 +47,20 @@ private:
     int choice = 0;
 
     static bool isValidEmail(const std::string &email);
+
+    void displayBuildingInfo();
+
+    void addClient();
+
+    void addFloor();
+
+    void addRoom();
+
+    void calculateSalary();
+
+    static void addSubordinate();
+
+    void cleanRoom();
 };
 
 #endif  // MENIU_H
