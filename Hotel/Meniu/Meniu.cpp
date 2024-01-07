@@ -138,12 +138,13 @@ void Meniu::addRoom() {
         std::string roomType;
         std::cin >> roomType;
 
-        new Camera(roomId, floorId, roomColor, roomType);
-        cladire.addFloor(floorId,etaj);
+        auto * newCamera = new Camera(roomId, floorId, roomColor, roomType);
+        etaj.adaugaCamera(newCamera);
     } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;
     }
 }
+
 
 void Meniu::calculateSalary() {
     try {
