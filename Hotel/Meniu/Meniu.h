@@ -32,10 +32,6 @@ public:
     ManagerNotFoundException() : MeniuException("Manager with the given ID not found.") {}
 };
 
-class InvalidRoomIdException : public MeniuException {
-public:
-    InvalidRoomIdException() : MeniuException("Invalid room ID. Room ID should be a positive integer.") {}
-};
 
 class Meniu {
 public:
