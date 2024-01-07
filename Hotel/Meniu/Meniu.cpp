@@ -76,12 +76,21 @@ void Meniu::addClient() {
         std::cin >> age;
 
         std::cout << "Enter client email: ";
-        std::cin >> email;
+        if (!(std::cin >> email)) {
+
+            std::cin.clear();
+            throw std::runtime_error("Error: Invalid input for email.");
+        }
+
+        if (email.empty()) {
+            throw std::runtime_error("Error: Email cannot be empty.");
+        }
 
         std::cout << "Is the client VIP? (1 for yes, 0 for no): ";
         std::cin >> isVIP;
 
         if (isValidEmail(email)) {
+
             cladire.addClient(Client(name, age, email, isVIP));
         } else {
             throw InvalidEmailException();
@@ -91,7 +100,7 @@ void Meniu::addClient() {
         cladire.addClient(newClient);
 
         newClient.doClientSpecificTask();
-    } catch (const InvalidEmailException& e) {
+    } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;
     }
 }
