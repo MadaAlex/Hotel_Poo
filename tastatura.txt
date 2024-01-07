@@ -1,16 +1,33 @@
-1
 2
-3
-4
-Sample Building Address
-Building 1
-John Doe
+Alice
 25
-mihai.gigel@example.com
+alice@example.com
 1
+3
+1
+Room1
+Floor1
+4
 101
+1
 red
 double
 5
-10
+20
 6
+2
+1
+3
+2
+4
+2
+1
+1
+John
+30
+john@example.com
+0
+6
+5
+3
+-1
