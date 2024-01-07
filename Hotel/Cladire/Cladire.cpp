@@ -1,6 +1,8 @@
 #include "Cladire.h"
 
-Cladire::Cladire() : id(0), areLift(false) {}
+#include "../Meniu/Meniu.h"
+
+Cladire::Cladire() : id(0), areLift(false), etaje(), clienti() {}
 
 Cladire::Cladire(int id, std::string adresa, std::string name)
         : id(id), areLift(false), adresa(std::move(adresa)), name(std::move(name)) {}
@@ -38,23 +40,16 @@ void Cladire::addClient(const Client &client)
 }
 
 
- void Cladire::addFloor(int floorId, const Etaj &etaj)
+void Cladire::addFloor(int floorId, const Etaj &etaj)
 {
-
-    if (static_cast<std::vector<Etaj>::size_type>(floorId) >= etaje.size())
+    if (floorId < 0 || floorId >= static_cast<int>(etaje.size()))
     {
-        throw std::out_of_range("Invalid floor ID.");
+
+        throw InvalidFloorIdException();
     }
 
 
-    if (static_cast<std::vector<Etaj>::size_type>(floorId) >= etaje.size())
-
-    {
-        etaje[floorId] = etaj;
-    }
-    else
-    {
-        etaje.push_back(etaj);
-    }
+    etaje[floorId] = etaj;
 }
+
 

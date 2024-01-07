@@ -106,30 +106,30 @@ void Meniu::addClient() {
 }
 
 void Meniu::addFloor() {
-    try {
-        int floorId;
-        std::cout << "Enter floor ID: ";
-        std::cin >> floorId;
 
-        std::cout << "Enter floor address: ";
-        std::string floorAddress;
-        std::cin >> floorAddress;
+    long int floorId;
+    std::string floorAddress;
+    std::string floorName;
 
-        std::cout << "Enter floor name: ";
-        std::string floorName;
-        std::cin >> floorName;
 
-        etaj.setId(floorId);
-        etaj.setAddress(floorAddress);
-        etaj.setName(floorName);
+    std::cout << "Enter floor ID: ";
+    std::cin >> floorId;
 
-        cladire.addFloor(floorId, etaj);
+    std::cout << "Enter floor address: ";
+    std::cin >> floorAddress;
 
-    } catch (const InvalidFloorIdException& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
+    std::cout << "Enter floor name: ";
+    std::cin >> floorName;
+
+    etaj.setId(floorId);
+    etaj.setAddress(floorAddress);
+    etaj.setName(floorName);
+
+    cladire.addFloor(floorId, etaj);
+
+
+
 }
-
 void Meniu::addRoom() {
     try {
         int floorId, roomId;
@@ -188,12 +188,14 @@ void Meniu::addSubordinate() {
             angajatiList.push_back(manager);
 
             Angajati* managerPtr = nullptr;
-            for (auto& angajat1 : angajatiList) {
-                if (angajat1.getId() == managerId) {
-                    managerPtr = &angajat1;
+
+            for (auto & i : angajatiList) {
+                if (i.getId() == managerId) {
+                    managerPtr = &i;
                     break;
                 }
             }
+
 
             if (!managerPtr) {
                 throw ManagerNotFoundException();

@@ -1,6 +1,7 @@
 // Etaj.cpp
 
 #include "Etaj.h"
+
 #include <stdexcept>
 
 Etaj::Etaj() : id(0), nr(0), cameraPointer(nullptr) {}
@@ -8,7 +9,7 @@ Etaj::Etaj() : id(0), nr(0), cameraPointer(nullptr) {}
 Etaj::Etaj(const Etaj &etj)
         : id(etj.id), nr(etj.nr), address(etj.address), name(etj.name)
 {
-    // Deep copy for the Camera pointer
+
     if (etj.cameraPointer) {
         cameraPointer = new Camera(*etj.cameraPointer);
     } else {
@@ -64,11 +65,8 @@ std::ostream& operator<<(std::ostream& os, const Etaj& etaj) {
     return os;
 }
 
-[[maybe_unused]] int Etaj::getId() const {
-    return id;
-}
+void Etaj::setId(long int newId) {
 
-void Etaj::setId(int newId) {
     id = newId;
 }
 

@@ -15,14 +15,13 @@ public:
     Etaj& operator=(const Etaj& other);
     friend std::ostream& operator<<(std::ostream& os, const Etaj& etaj);
 
-     [[nodiscard]] int getId() const;
-    void setId(int newId);
+    void setId(long int newId);
     void setAddress(const std::string& newAddress);
     void setName(const std::string& newName);
     void adaugaCamera(Camera *camera);
 
 private:
-    int id;
+    long int id;
     int nr;
     Camera* cameraPointer;
     std::string address;
